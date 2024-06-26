@@ -1,6 +1,7 @@
 import React from 'react';
 
 const gridSize = 28;
+let binaryGridStates = Array(gridSize**2).fill(0)
 
 export default function Canvas() {
     const [gridStates, setGridStates] = React.useState(Array(gridSize ** 2).fill('w-4 h-4'));
@@ -23,10 +24,11 @@ export default function Canvas() {
 
     const updateGridState = (index: number) => {
         const updatedGridStates = [...gridStates];
+        binaryGridStates[index] = 1
         updatedGridStates[index] = 'w-4 h-4 bg-black';
+        console.log(binaryGridStates)
         setGridStates(updatedGridStates);
     };
-
     const canvasGridComponents = [];
     for (let i = 0; i < gridSize ** 2; i++) {
         canvasGridComponents.push(
