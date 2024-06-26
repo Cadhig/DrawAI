@@ -1,11 +1,27 @@
-import React from 'react'
+import React from 'react';
 
-const gridSize = 28
+const gridSize = 28;
 
 export default function Canvas() {
     const [gridStates, setGridStates] = React.useState(Array(gridSize ** 2).fill('w-4 h-4'));
+    const [isMouseDown, setIsMouseDown] = React.useState(false);
 
-    const handleMouseDown = (index: any) => {
+    const handleMouseDown = (index: number) => {
+        setIsMouseDown(true);
+        updateGridState(index);
+    };
+
+    const handleMouseEnter = (index: number) => {
+        if (isMouseDown) {
+            updateGridState(index);
+        }
+    };
+
+    const handleMouseUp = () => {
+        setIsMouseDown(false);
+    };
+
+    const updateGridState = (index: number) => {
         const updatedGridStates = [...gridStates];
         updatedGridStates[index] = 'w-4 h-4 bg-black';
         setGridStates(updatedGridStates);
@@ -18,6 +34,8 @@ export default function Canvas() {
                 key={i}
                 className={gridStates[i]}
                 onMouseDown={() => handleMouseDown(i)}
+                onMouseEnter={() => handleMouseEnter(i)}
+                onMouseUp={handleMouseUp}
                 content={<canvas></canvas>}
             />
         );
@@ -31,11 +49,14 @@ export default function Canvas() {
 }
 
 function CanvasGrid(props: any) {
-
     return (
-        <div className={props.className} onMouseDown={props.onMouseDown}>
+        <div
+            className={props.className}
+            onMouseDown={props.onMouseDown}
+            onMouseEnter={props.onMouseEnter}
+            onMouseUp={props.onMouseUp}
+        >
             {props.content}
         </div>
-
-    )
+    );
 }
