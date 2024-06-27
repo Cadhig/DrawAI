@@ -1,10 +1,10 @@
 import React from 'react';
-
-const gridSize = 28;
-let binaryGridStates = Array(gridSize**2).fill(0)
+const rows = 28
+const cols = 28
+let binaryGridStates = Array(rows*cols).fill(0)
 
 export default function Canvas() {
-    const [gridStates, setGridStates] = React.useState(Array(gridSize ** 2).fill('w-4 h-4'));
+    const [gridStates, setGridStates] = React.useState(Array(rows * cols).fill('w-4 h-4'));
     const [isMouseDown, setIsMouseDown] = React.useState(false);
 
     const handleMouseDown = (index: number) => {
@@ -30,7 +30,7 @@ export default function Canvas() {
         setGridStates(updatedGridStates);
     };
     const canvasGridComponents = [];
-    for (let i = 0; i < gridSize ** 2; i++) {
+    for (let i = 0; i < rows * cols; i++) {
         canvasGridComponents.push(
             <CanvasGrid
                 key={i}
