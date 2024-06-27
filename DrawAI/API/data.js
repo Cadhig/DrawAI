@@ -3,6 +3,12 @@ const router = express.Router()
 
 let arrayData
 
+router.put('/aiGuess', (req, res)=>{
+   const aiGuess = req.body
+    console.log(aiGuess)
+    return res.json(aiGuess)
+})
+
 router.get('/', (req, res)=> {
     return res.json(arrayData)
 })
