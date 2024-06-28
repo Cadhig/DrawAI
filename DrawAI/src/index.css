@@ -10,3 +10,10 @@
   height: 448px;
   border: 1px solid black
 }
+
+.font-ai {
+  font-family: "Playwrite FR Moderne", cursive;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
