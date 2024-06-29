@@ -12,9 +12,9 @@ def updateAiGuess():
     url = 'http://localhost:5000/api/data/aiGuess'
     response = requests.put(url, json=data_to_send)
     if response.status_code == 200:
-        print('PUT request successful')
+        print('Successfully sent mock data')
     else:
-        print('Failed to send PUT request:', response.status_code)
+        print('Failed to send mock data:', response.status_code)
 
 # get req
 def getUserData():
