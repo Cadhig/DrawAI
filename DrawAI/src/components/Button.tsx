@@ -1,6 +1,7 @@
+import React from 'react'
 
 
-export function ClearButton() {
+export function ClearButton(props: any) {
 
     return (
         <Button text="Clear" />
