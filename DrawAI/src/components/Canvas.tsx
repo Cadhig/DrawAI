@@ -1,17 +1,13 @@
 import React from 'react';
+import { Button } from './Button';
 const rows = 28
 const cols = 28
 
-export default function Canvas(props: any) {
+export default function Canvas() {
     const [binaryGrid, setBinaryGrid] = React.useState(Array(rows * cols).fill(0))
     const [gridStates, setGridStates] = React.useState(Array(rows * cols).fill('w-4 h-4'));
     const [isMouseDown, setIsMouseDown] = React.useState(false);
 
-    React.useEffect(() => {
-        if (props.clear === true) {
-            clearCanvas();
-        }
-    }, [props.clear]);
     
     function clearCanvas() {
         setBinaryGrid(() => {
@@ -88,8 +84,11 @@ export default function Canvas(props: any) {
 
 
     return (
-        <div className="grid-container canvas-shadow">
-            {canvasGridComponents}
+        <div>
+            <div className="grid-container canvas-shadow">
+                {canvasGridComponents}
+            </div>
+            <ClearButton onClick={()=> clearCanvas()}/>
         </div>
     );
 }
@@ -105,4 +104,11 @@ function CanvasGrid(props: any) {
             {props.content}
         </div>
     );
+}
+
+ function ClearButton(props: { onClick: () => void }) {
+
+    return (
+        <Button text="Clear" onClick={props.onClick}/>
+    )
 }
