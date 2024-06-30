@@ -84,11 +84,13 @@ export default function Canvas() {
 
 
     return (
-        <div>
+        <div className='flex flex-col justify-center items-center gap-4'>
             <div className="grid-container canvas-shadow">
                 {canvasGridComponents}
             </div>
+
             <ClearButton onClick={()=> clearCanvas()}/>
+
         </div>
     );
 }
