@@ -88,9 +88,7 @@ export default function Canvas() {
             <div className="grid-container canvas-shadow">
                 {canvasGridComponents}
             </div>
-
             <ClearButton onClick={()=> clearCanvas()}/>
-
         </div>
     );
 }
