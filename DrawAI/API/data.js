@@ -2,9 +2,15 @@ import express from 'express'
 const router = express.Router()
 
 let arrayData
+let aiGuess
 
 router.put('/aiGuess', (req, res) => {
-    const aiGuess = req.body
+     aiGuess = req.body
+    console.log(aiGuess)
+    return res.json(aiGuess)
+})
+
+router.get('/aiGuess', (req,res)=>{
     console.log(aiGuess)
     return res.json(aiGuess)
 })
