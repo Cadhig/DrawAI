@@ -3,7 +3,7 @@ import { Button } from './Button';
 const rows = 28
 const cols = 28
 
-export default function Canvas() {
+export default function Canvas(props: any) {
     const [binaryGrid, setBinaryGrid] = React.useState(Array(rows * cols).fill(0))
     const [gridStates, setGridStates] = React.useState(Array(rows * cols).fill('w-4 h-4'));
     const [isMouseDown, setIsMouseDown] = React.useState(false);
@@ -89,6 +89,7 @@ export default function Canvas() {
                 {canvasGridComponents}
             </div>
             <ClearButton onClick={()=> clearCanvas()}/>
+            <SubmitButton setGuess={props.setGuess}/>
         </div>
     );
 }
@@ -110,5 +111,23 @@ function CanvasGrid(props: any) {
 
     return (
         <Button text="Clear" onClick={props.onClick}/>
+    )
+}
+
+function SubmitButton(props:any){
+    async function getGuess() {
+        const response = await fetch('http://localhost:5000/api/data/aiGuess', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+        const aiGuess = await response.json()
+        props.setGuess(aiGuess.guessed_digit)
+        console.log(aiGuess)
+    }
+
+    return (
+        <Button text="Submit" onClick={()=> getGuess()}/>
     )
 }
