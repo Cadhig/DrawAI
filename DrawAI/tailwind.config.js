@@ -10,7 +10,8 @@ export default {
       colors: {
         "draw-blue": "#a7c6da",
         "draw-black": "#1E2216",
-        "draw-hover": "#34362F"
+        "draw-hover": "#34362F",
+        "draw-hover-blue": "#ABCADE"
       }
     },
   },
