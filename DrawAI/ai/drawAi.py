@@ -1,6 +1,5 @@
 import requests
 import numpy as np
-import matplotlib.pyplot as plt
 import torch
 from torch import nn
 
@@ -24,6 +23,7 @@ def guessDigit(model,data):
     with torch.no_grad(): # do not keep track of gradients for training
         data = torch.FloatTensor(data).reshape((1,28,28))
         pred = model(data) # RUN NEURAL NETWORK
+        print(pred)
         return pred.argmax().item()
 
 
@@ -57,7 +57,7 @@ def getUserData():
 if __name__ == '__main__':
     # loading model from file
     model = NeuralNetwork()
-    model.load_state_dict(torch.load("model.pth"))
+    model.load_state_dict(torch.load("model.pth",  map_location=torch.device('cpu') ))
     model.eval() # ensures model is in evaluation mode and not training
 
     # TODO: While loop or some other structure to constantly get and put data
