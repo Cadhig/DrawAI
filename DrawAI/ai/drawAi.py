@@ -1,4 +1,5 @@
 import requests
+import os
 import numpy as np
 import torch
 from torch import nn
@@ -18,21 +19,28 @@ class NeuralNetwork(nn.Module):
         logits = self.linear_relu_stack(x)
         return logits
 
+def guessDigit(model, data):
+    try:  
+        if sum(data) == 0:
+            return "/"
+        if sum(data) == 784:
+            return "NaN"
 
-def guessDigit(model,data):
-    with torch.no_grad(): # do not keep track of gradients for training
-        data = torch.FloatTensor(data).reshape((1,28,28))
-        pred = model(data) # RUN NEURAL NETWORK
-        print(pred)
-        return pred.argmax().item()
+        with torch.no_grad():  # do not keep track of gradients for training
+            data_tensor = torch.FloatTensor(data).reshape((1, 28, 28))
+            pred = model(data_tensor)  # RUN NEURAL NETWORK
+            return pred.argmax().item()
+    except Exception as e:
+        print(f"Error: {e}")
+        raise e
 
 
-def updateAiGuess(model,data):
+def updateAiGuess(data):
     data_to_send = {
-        'guessed_digit': guessDigit(model,data)
+        'guessed_digit': guessDigit(data)
     }
-    url = 'http://localhost:5000/api/data/aiGuess'
-    response = requests.put(url, json=data_to_send)
+    url = 'http://localhost:5000/aiGuess'
+    response = requests.post(url, json=data_to_send)
     if response.status_code == 200:
         print('Successfully sent data')
     else:
@@ -56,6 +64,7 @@ def getUserData():
 
 if __name__ == '__main__':
     # loading model from file
+    print('main')
     model = NeuralNetwork()
     model.load_state_dict(torch.load("model.pth",  map_location=torch.device('cpu') ))
     model.eval() # ensures model is in evaluation mode and not training

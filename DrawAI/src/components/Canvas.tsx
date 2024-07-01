@@ -50,23 +50,26 @@ export default function Canvas(props: any) {
     };
 
     const canvasGridComponents = [];
-    function sendBinaryArray(gridState: any) {
-        fetch('http://localhost:5000/api/data', {
-            method: 'PUT',
+   async function sendBinaryArray(gridState: any) {
+    try {
+        const response = await fetch('http://127.0.0.1:5000/aiGuess', {
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(gridState)
-        })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                console.log('Data sent successfully');
-            })
-            .catch(error => {
-                console.error('Error sending data:', error);
-            });
+        });
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const aiGuess = await response.json()
+        props.setGuess(aiGuess.guessed_digit)
+
+        console.log('Data sent successfully');
+    } catch (error) {
+        console.error('Error sending data:', error);
+    }
     }
 
     for (let i = 0; i < rows * cols; i++) {
@@ -89,7 +92,6 @@ export default function Canvas(props: any) {
                 {canvasGridComponents}
             </div>
             <ClearButton onClick={()=> clearCanvas()}/>
-            <SubmitButton setGuess={props.setGuess}/>
         </div>
     );
 }
@@ -111,23 +113,5 @@ function CanvasGrid(props: any) {
 
     return (
         <Button text="Clear" onClick={props.onClick}/>
-    )
-}
-
-function SubmitButton(props:any){
-    async function getGuess() {
-        const response = await fetch('http://localhost:5000/api/data/aiGuess', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-        })
-        const aiGuess = await response.json()
-        props.setGuess(aiGuess.guessed_digit)
-        console.log(aiGuess)
-    }
-
-    return (
-        <Button text="Submit" onClick={()=> getGuess()}/>
     )
 }

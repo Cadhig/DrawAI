@@ -2,7 +2,7 @@ export default function AiStats(){
 
     return(
         <div className="h-full w-full flex items-center justify-center">
-            <div className="w-64 h-1/2 p-4 bg-draw-blue items-center border rounded">
+            <div className="w-64 h-1/2 p-4 bg-draw-blue items-center border rounded shadow-xl">
                 <div className="flex flex-col items-center">
                 <h2 className="font-bold text-xl">Stats</h2>
                     <ul className="text-xl">
