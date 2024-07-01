@@ -37,7 +37,7 @@ def aiGuess():
 if __name__ == '__main__':
     print('begin main')
     model = drawAi.NeuralNetwork()
-    model.load_state_dict(torch.load("model.pth",  map_location=torch.device('cpu') ))
+    model.load_state_dict(torch.load("ai/model.pth",  map_location=torch.device('cpu') ))
     model.eval()
     print('finsih main')
     app.run(debug=True)
