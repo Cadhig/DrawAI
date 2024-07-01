@@ -19,10 +19,13 @@ def aiGuess():
     try:
         userInput = request.json
         guessed_digit, probabilities = drawAi.guessDigit(model, userInput)
-        print(probabilities.tolist()[0])
+        if probabilities == "NaN":
+            probabilitiesStats = []
+        else:
+            probabilitiesStats = probabilities.tolist()[0]
         return {
             "guessed_digit": guessed_digit,
-            "probabilities": probabilities.tolist()[0],
+            "probabilities": probabilitiesStats
         }
     except Exception as e:
         print(f"Error in aiGuess: {e}")
