@@ -40,4 +40,4 @@ if __name__ == '__main__':
     model.load_state_dict(torch.load("ai/model.pth",  map_location=torch.device('cpu') ))
     model.eval()
     print('finsih main')
-    app.run(debug=True)
+    app.run(debug=True, host="0.0.0.0")
