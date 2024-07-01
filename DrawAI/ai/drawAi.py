@@ -8,6 +8,7 @@ class NeuralNetwork(nn.Module):
     def __init__(self):
         super().__init__()
         self.flatten = nn.Flatten()
+        self.softmax = nn.Softmax()
         self.linear_relu_stack = nn.Sequential(
             nn.Linear(28*28, 50),
             nn.ReLU(),
@@ -29,7 +30,9 @@ def guessDigit(model, data):
         with torch.no_grad():  # do not keep track of gradients for training
             data_tensor = torch.FloatTensor(data).reshape((1, 28, 28))
             pred = model(data_tensor)  # RUN NEURAL NETWORK
-            return pred.argmax().item()
+            probabilities = model.softmax(pred) # turn logits into probabilities
+            digit = probabilities.argmax().item()
+            return digit, probabilities
     except Exception as e:
         print(f"Error: {e}")
         raise e

@@ -19,9 +19,10 @@ def index():
 def aiGuess():
     try:
         userInput = request.json
-        guessed_digit = drawAi.guessDigit(model, userInput)
+        guessed_digit, probabilities = drawAi.guessDigit(model, userInput)
         return {
-            "guessed_digit": guessed_digit
+            "guessed_digit": guessed_digit,
+            "probabilities": probabilities
         }
     except Exception as e:
         print(f"Error in aiGuess: {e}")
