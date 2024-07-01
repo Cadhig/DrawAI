@@ -6,22 +6,23 @@ import torch
 from torch import nn
 
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='')
 CORS(app)
 
 @app.route('/')
 @app.route('/index')
 def index():
-    return Flask.redirect(Flask.url_for('static', filename='index.html'))
+    return app.send_static_file(filename="index.html")
 
 @app.route('/api/aiGuess', methods=['POST', 'GET'])
 def aiGuess():
     try:
         userInput = request.json
         guessed_digit, probabilities = drawAi.guessDigit(model, userInput)
+        print(probabilities.tolist()[0])
         return {
             "guessed_digit": guessed_digit,
-            "probabilities": probabilities
+            "probabilities": probabilities.tolist()[0],
         }
     except Exception as e:
         print(f"Error in aiGuess: {e}")

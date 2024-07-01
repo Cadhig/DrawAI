@@ -52,7 +52,7 @@ export default function Canvas(props: any) {
     const canvasGridComponents = [];
     async function sendBinaryArray(gridState: any) {
         try {
-            const response = await fetch('http://127.0.0.1:5000/aiGuess', {
+            const response = await fetch('/api/aiGuess', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
