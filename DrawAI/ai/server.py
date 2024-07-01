@@ -9,13 +9,12 @@ from torch import nn
 app = Flask(__name__)
 CORS(app)
 
-
 @app.route('/')
 @app.route('/index')
 def index():
-    return "Hello, World!"
+    return Flask.redirect(Flask.url_for('static', filename='index.html'))
 
-@app.route('/aiGuess', methods=['POST', 'GET'])
+@app.route('/api/aiGuess', methods=['POST', 'GET'])
 def aiGuess():
     try:
         userInput = request.json

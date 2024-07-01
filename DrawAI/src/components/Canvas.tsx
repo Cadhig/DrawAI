@@ -4,7 +4,7 @@ const rows = 28
 const cols = 28
 
 export default function Canvas(props: any) {
-    const [binaryGrid, setBinaryGrid] = React.useState(Array(rows * cols).fill(0))
+    const [_binaryGrid, setBinaryGrid] = React.useState(Array(rows * cols).fill(0))
     const [gridStates, setGridStates] = React.useState(Array(rows * cols).fill('w-4 h-4'));
     const [isMouseDown, setIsMouseDown] = React.useState(false);
 
