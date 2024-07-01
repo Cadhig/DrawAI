@@ -8,7 +8,7 @@ export default function Canvas(props: any) {
     const [gridStates, setGridStates] = React.useState(Array(rows * cols).fill('w-4 h-4'));
     const [isMouseDown, setIsMouseDown] = React.useState(false);
 
-    
+
     function clearCanvas() {
         setBinaryGrid(() => {
             const clearedBinaryGrid = Array(rows * cols).fill(0);
@@ -50,26 +50,26 @@ export default function Canvas(props: any) {
     };
 
     const canvasGridComponents = [];
-   async function sendBinaryArray(gridState: any) {
-    try {
-        const response = await fetch('http://127.0.0.1:5000/aiGuess', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(gridState)
-        });
+    async function sendBinaryArray(gridState: any) {
+        try {
+            const response = await fetch('http://127.0.0.1:5000/aiGuess', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(gridState)
+            });
 
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const aiGuess = await response.json()
+            props.setGuess(aiGuess.guessed_digit)
+
+            console.log('Data sent successfully');
+        } catch (error) {
+            console.error('Error sending data:', error);
         }
-        const aiGuess = await response.json()
-        props.setGuess(aiGuess.guessed_digit)
-
-        console.log('Data sent successfully');
-    } catch (error) {
-        console.error('Error sending data:', error);
-    }
     }
 
     for (let i = 0; i < rows * cols; i++) {
@@ -91,7 +91,7 @@ export default function Canvas(props: any) {
             <div className="grid-container canvas-shadow">
                 {canvasGridComponents}
             </div>
-            <ClearButton onClick={()=> clearCanvas()}/>
+            <ClearButton onClick={() => clearCanvas()} />
         </div>
     );
 }
@@ -109,9 +109,9 @@ function CanvasGrid(props: any) {
     );
 }
 
- function ClearButton(props: { onClick: () => void }) {
+function ClearButton(props: { onClick: () => void }) {
 
     return (
-        <Button text="Clear" onClick={props.onClick}/>
+        <Button text="Clear" onClick={props.onClick} />
     )
 }

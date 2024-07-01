@@ -34,34 +34,6 @@ def guessDigit(model, data):
         print(f"Error: {e}")
         raise e
 
-
-def updateAiGuess(data):
-    data_to_send = {
-        'guessed_digit': guessDigit(data)
-    }
-    url = 'http://localhost:5000/aiGuess'
-    response = requests.post(url, json=data_to_send)
-    if response.status_code == 200:
-        print('Successfully sent data')
-    else:
-        print('Failed to send data:', response.status_code)
-
-# get req
-def getUserData():
-    url = 'http://localhost:5000/api/data'
-    response = requests.get(url)
-    if response.status_code == 200:
-        try:
-            data = response.json()
-            print('Data received:', data)
-            return data
-        except requests.exceptions.JSONDecodeError as e:
-            print('Error decoding JSON:', e)
-            return None
-    else:
-        print('Failed to retrieve data:', response.status_code)
-        return None
-
 if __name__ == '__main__':
     # loading model from file
     print('main')
