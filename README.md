@@ -23,7 +23,7 @@ To view the deployed app click here: <br>
 https://drawai.onrender.com
 
 ## Contributions
-Alexander Ahrens for AI model <br>
+Alexander Ahrens (ahrensaj) for AI model <br>
 <br>
 Contributions are welcome! If you'd like to contribute to Draw AI Number Guesser, please fork the repository and create a pull request with your proposed changes.
 
