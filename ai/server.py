@@ -23,6 +23,7 @@ def aiGuess():
             probabilitiesStats = []
         else:
             probabilitiesStats = probabilities.tolist()[0]
+        print(probabilitiesStats)
         return {
             "guessed_digit": guessed_digit,
             "probabilities": probabilitiesStats
