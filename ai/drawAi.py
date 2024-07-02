@@ -23,9 +23,10 @@ class NeuralNetwork(nn.Module):
 def guessDigit(model, data):
     try:  
         if sum(data) == 0:
-            return "/"
-        if sum(data) == 784:
-            return "NaN"
+            return "/", "NaN"
+        if sum(data) == len(data):
+            print('true')
+            return "NaN", "NaN"
 
         with torch.no_grad():  # do not keep track of gradients for training
             data_tensor = torch.FloatTensor(data).reshape((1, 28, 28))
@@ -45,5 +46,3 @@ if __name__ == '__main__':
     model.eval() # ensures model is in evaluation mode and not training
 
     # TODO: While loop or some other structure to constantly get and put data
-    data = getUserData()  # Send a GET request to retrieve data
-    updateAiGuess(model,data)  # Send a PUT request with guessed digit

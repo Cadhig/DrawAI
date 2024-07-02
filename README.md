@@ -1,16 +1,31 @@
 # Draw AI
-Draw a number, and AI will guess which number is being drawn.
+Welcome to Draw AI Number Guesser! This project allows users to draw digits on a 28x28 grid canvas, submit their drawing, and receive an AI-generated guess of the drawn number along with statistical probabilities.
+
+## Features
+- **On-Screen Canvas**: Users interact with a 28x28 grid canvas to draw digits.
+- **Real-Time Data Transmission**: Canvas data, represented as a 784-indexed array of 1's and 0's (1 for filled, 0 for empty), is sent to the backend in near-real time upon interaction.
+- **Backend Processing**: Backend, powered by Python Flask, receives the canvas data and forwards it to an AI model trained on the MNIST database.
+- **AI Prediction**: The AI processes the array to predict the drawn number and provides statistical likelihoods for each possible digit.
+- **Frontend Display**: React/TypeScript frontend displays the AI's number guess and statistical data in near-real time, enhancing user interaction and feedback.
 
 ## Technologies Used
-<div>
-<img width="50" src="https://user-images.githubusercontent.com/25181517/183890598-19a0ac2d-e88a-4005-a8df-1ee36782fde1.png" alt="TypeScript" title="TypeScript"/>
-<img width="50" src="https://user-images.githubusercontent.com/25181517/183897015-94a058a6-b86e-4e42-a37f-bf92061753e5.png" alt="React" title="React"/>
-<img width="50" src="https://user-images.githubusercontent.com/25181517/183423507-c056a6f9-1ba8-4312-a350-19bcbc5a8697.png" alt="Python" title="Python"/>
-<img width="50" src="https://user-images.githubusercontent.com/25181517/183423775-2276e25d-d43d-4e58-890b-edbc88e915f7.png" alt="Flask" title="Flask"/>
-</div>
+- **Frontend**: React, TypeScript
+- **Backend**: Python Flask
+- **AI Model**: pyTorch, trained on MNIST dataset for digit recognition
 
-- pytorch
-- numpy
+## Getting Started
+To run the project locally:
+- Clone this repo
+- Run `npm install` in root directory
+- Run `pip install -r ./ai/requirements.txt` in root directory
+- Start application... run `python ai/server.py` in root directory <br>
+To view the deployed app click here: <br>
+https://drawai.onrender.com
+
+## Contributions
+Alexander Ahrens (ahrensaj) for AI model <br>
+<br>
+Contributions are welcome! If you'd like to contribute to Draw AI Number Guesser, please fork the repository and create a pull request with your proposed changes.
 
 ## Process
 ![image](https://github.com/Cadhig/DrawAI/assets/160413853/8ba39f42-2a79-43bf-ac0e-38366b11c1ba)
