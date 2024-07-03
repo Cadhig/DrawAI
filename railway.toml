@@ -3,7 +3,7 @@
 builder = "NIXPACKS"
 
 [build.nixpacksPlan.phases.setup]
-nixPkgs = ["...", "python", "nodejs", "pip"]
+nixPkgs = ["...", "python3", "nodejs"]
 
 [build.nixpacksPlan.phases.install]
 dependsOn = ["setup"]
