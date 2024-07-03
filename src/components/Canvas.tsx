@@ -65,6 +65,8 @@ export default function Canvas(props: any) {
             }
             const aiGuess = await response.json()
             props.setGuess(aiGuess.guessed_digit)
+            console.log(aiGuess.probabilities)
+            props.setStats(aiGuess.probabilities)
 
             console.log('Data sent successfully');
         } catch (error) {
