@@ -23,7 +23,6 @@ To view the deployed app click here: <br>
 https://drawai.onrender.com
 
 ## Future Development / Todos
-- Replace mock stats with real stats
 - Rework UI
 - Re-scale canvas
 
