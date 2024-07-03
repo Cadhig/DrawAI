@@ -3,11 +3,11 @@
 builder = "NIXPACKS"
 
 [build.nixpacksPlan.phases.setup]
-nixPkgs = ["...", "python3", "nodejs"]
+nixPkgs = ["python", "nodejs"]
 
-[build.nixpacksPlan.phases.install]
-dependsOn = ["setup"]
-cmds = ["npm install", "pip install -r requirements.txt"]
+# [build.nixpacksPlan.phases.install]
+# dependsOn = ["setup"]
+# cmds = ["npm install", "pip install -r requirements.txt"]
 
 [deploy]
 startCommand = "python ai/server.py"
