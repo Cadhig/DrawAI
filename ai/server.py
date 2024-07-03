@@ -30,7 +30,6 @@ def aiGuess():
             "probabilities": probabilitiesStats
         }
     except Exception as e:
-        print(f"Error in aiGuess: {e}")
         return {
             "error": str(e)
         }, 500  # Internal Server Error
