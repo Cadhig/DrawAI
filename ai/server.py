@@ -3,7 +3,6 @@ from flask import request
 from flask import Flask
 from flask_cors import CORS
 import torch
-from torch import nn
 from waitress import serve
 
 
