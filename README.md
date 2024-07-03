@@ -26,6 +26,7 @@ https://drawai.onrender.com <br>
 
 
 ## Future Development / Todos
+- Improve AI training
 - Mobile responsiveness
 - Rework UI
 - Re-scale canvas
