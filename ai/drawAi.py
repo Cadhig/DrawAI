@@ -35,7 +35,6 @@ def guessDigit(model, data):
             digit = probabilities.argmax().item()
             return digit, probabilities
     except Exception as e:
-        print(f"Error: {e}")
         raise e
 
 if __name__ == '__main__':
