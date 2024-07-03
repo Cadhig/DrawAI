@@ -18,7 +18,7 @@ To run the project locally:
 - Clone this repo
 - Run `npm install` in root directory
 - Run `pip install -r ./ai/requirements.txt` in root directory
-- Start application... run `python ai/server.py` in root directory <br>
+- Start application... run `python ai/server.py` and `npm run dev` in root directory <br>
 To view the deployed app click here: <br>
 https://drawai.onrender.com
 
