@@ -7,8 +7,11 @@ setup = "pip install -r requirements.txt"
 
 [services.frontend]
 name = "frontend"
-start = "npm run dev"
-setup = "npm install"
+start = "serve -s build"
+setup = """
+      npm install
+      npm run build
+    """
 
 [deployments]
 [deployments.production]
