@@ -1,20 +1,13 @@
-[build
-]
-builder = "NIXPACKS"[build.nixpacksPlan.phases.setup
-]
-nixPkgs = [
-    "...",
-    "python",
-    "nodejs",
-    "npm"
-]
 
-[build.nixpacksPlan.phases.install
-]
-dependsOn = [
-    "setup"
-]
-cmds = [
-    "npm install", "python install -r requirements.txt][deploy
-    ]
+[build]
+builder = "NIXPACKS"
+
+[build.nixpacksPlan.phases.setup]
+nixPkgs = ["...", "python", "nodejs", "npm"]
+
+[build.nixpacksPlan.phases.install]
+dependsOn = ["setup"]
+cmds = ["npm install", "python install -r requirements.txt"]
+
+[deploy]
 startCommand = "python ai/server.py"
