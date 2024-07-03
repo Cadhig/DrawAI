@@ -3,7 +3,6 @@ from flask import request
 from flask import Flask
 from flask_cors import CORS
 import torch
-from torch import nn
 from waitress import serve
 
 
@@ -30,7 +29,6 @@ def aiGuess():
             "probabilities": probabilitiesStats
         }
     except Exception as e:
-        print(f"Error in aiGuess: {e}")
         return {
             "error": str(e)
         }, 500  # Internal Server Error
