@@ -23,7 +23,8 @@ To view deployed version, [click here](https://drawai-production.up.railway.app/
 
 
 
-![image](https://github.com/Cadhig/DrawAI/assets/160413853/748d6f01-43ad-48a9-8b21-2dbd963c77c0)
+![image](https://github.com/Cadhig/DrawAI/assets/160413853/48859fb6-c430-4ddf-99cf-4a897e84741d)
+
 
 
 ## Future Development / Todos
