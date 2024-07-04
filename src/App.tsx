@@ -9,11 +9,13 @@ export default function App() {
     const [stats, setStats] = React.useState()
 
     return (
-        <div className='flex justify-center items-center h-svh gap-6'>
+        <div className='flex flex-col h-full'>
             <Header />
-            <AiGuess guess={guess}/>
-            <Canvas setGuess={setGuess} setStats={setStats}/>
-            <AiStats stats={stats}/>
+            <div className='flex justify-center items-center h-svh lg:gap-6 w-full lg:flex-row flex-col bg-draw-blue'>
+                <AiGuess guess={guess} />
+                <Canvas setGuess={setGuess} setStats={setStats} />
+                <AiStats stats={stats} />
+            </div>
         </div>
     );
 }
