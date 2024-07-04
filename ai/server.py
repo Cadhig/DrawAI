@@ -23,7 +23,6 @@ def aiGuess():
             probabilitiesStats = []
         else:
             probabilitiesStats = probabilities.tolist()[0]
-        print(probabilitiesStats)
         return {
             "guessed_digit": guessed_digit,
             "probabilities": probabilitiesStats
@@ -35,9 +34,7 @@ def aiGuess():
 
 
 if __name__ == '__main__':
-    print('begin main')
-    model = drawAi.NeuralNetwork()
-    model.load_state_dict(torch.load("ai/model.pth",  map_location=torch.device('cpu') ))
+    model = drawAi.CNN()
+    model.load_state_dict(torch.load("ai/model04.pth",  map_location=torch.device('cpu') ))
     model.eval()
-    print('finsih main')
     serve(app, host="0.0.0.0", port=5000)
