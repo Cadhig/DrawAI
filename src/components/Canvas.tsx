@@ -51,9 +51,9 @@ export default function Canvas(props: any) {
 
     const canvasGridComponents = [];
     async function sendBinaryArray(gridState: any) {
-        const host = import.meta.env.MODE == 'development' ? 'http://127.0.0.1:5000' : null
+        const endpoint = import.meta.env.MODE == 'development' ? 'http://127.0.0.1:5000/api/aiGuess' : '/api/aiGuess'
         try {
-            const response = await fetch(`${host}/api/aiGuess`, {
+            const response = await fetch(endpoint, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
