@@ -5,7 +5,7 @@ const cols = 28
 
 export default function Canvas(props: any) {
     const [_binaryGrid, setBinaryGrid] = React.useState(Array(rows * cols).fill(0))
-    const [gridStates, setGridStates] = React.useState(Array(rows * cols).fill('lg:w-4 lg:h-4 w-3 h-3'));
+    const [gridStates, setGridStates] = React.useState(Array(rows * cols).fill('lg:w-4 lg:h-4 w-3 h-3 bg-white/80'));
     const [isMouseDown, setIsMouseDown] = React.useState(false);
 
 
@@ -15,7 +15,7 @@ export default function Canvas(props: any) {
             sendBinaryArray(clearedBinaryGrid);
             return clearedBinaryGrid;
         });
-        setGridStates(Array(rows * cols).fill('lg:w-4 lg:h-4 w-3 h-3'));
+        setGridStates(Array(rows * cols).fill('lg:w-4 lg:h-4 w-3 h-3 bg-white/80'));
     };
 
     const handleMouseDown = (index: number) => {
