@@ -19,6 +19,8 @@ To run the project locally:
 - Run `npm install` in root directory
 - Run `pip install -r ./ai/requirements.txt` in root directory
 - Start application... run `python ai/server.py` and `npm run dev` in root directory <br>
+To view deployed version, [click here](https://drawai-production.up.railway.app/)
+
 
 
 ![image](https://github.com/Cadhig/DrawAI/assets/160413853/748d6f01-43ad-48a9-8b21-2dbd963c77c0)
