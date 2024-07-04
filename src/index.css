@@ -6,8 +6,8 @@
   display: grid;
   grid-template-columns: repeat(28, 1fr);
   grid-template-rows: repeat(28, 1fr);
-  width: 448px;
-  height: 448px;
+  width: 336px;
+  height: 336px;
   border: 1px solid gray
 }
 
@@ -20,4 +20,11 @@
 
 .canvas-shadow {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+@media (min-width: 1024px) {
+  .grid-container {
+    width: 448px;
+    height: 448px;
+  }
 }

@@ -5,7 +5,7 @@ const cols = 28
 
 export default function Canvas(props: any) {
     const [_binaryGrid, setBinaryGrid] = React.useState(Array(rows * cols).fill(0))
-    const [gridStates, setGridStates] = React.useState(Array(rows * cols).fill('w-4 h-4'));
+    const [gridStates, setGridStates] = React.useState(Array(rows * cols).fill('lg:w-4 lg:h-4 w-3 h-3'));
     const [isMouseDown, setIsMouseDown] = React.useState(false);
 
 
@@ -15,7 +15,7 @@ export default function Canvas(props: any) {
             sendBinaryArray(clearedBinaryGrid);
             return clearedBinaryGrid;
         });
-        setGridStates(Array(rows * cols).fill('w-4 h-4'));
+        setGridStates(Array(rows * cols).fill('lg:w-4 lg:h-4 w-3 h-3'));
     };
 
     const handleMouseDown = (index: number) => {
@@ -44,14 +44,14 @@ export default function Canvas(props: any) {
 
         setGridStates(prevGridStates => {
             const updatedGridStates = [...prevGridStates];
-            updatedGridStates[index] = 'w-4 h-4 bg-black';
+            updatedGridStates[index] = 'lg:w-4 lg:h-4 w-3 h-3 bg-black';
             return updatedGridStates;
         });
     };
 
     const canvasGridComponents = [];
     async function sendBinaryArray(gridState: any) {
-        const host = import.meta.env.MODE == 'development'? 'http://127.0.0.1:5000': null
+        const host = import.meta.env.MODE == 'development' ? 'http://127.0.0.1:5000' : null
         try {
             const response = await fetch(`${host}/api/aiGuess`, {
                 method: 'POST',
