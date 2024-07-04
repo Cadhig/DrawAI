@@ -12,6 +12,7 @@ Welcome to Draw AI Number Guesser! This project allows users to draw digits on a
 - **Frontend**: React, TypeScript
 - **Backend**: Python Flask
 - **AI Model**: pyTorch, trained on MNIST dataset for digit recognition
+- **Deployment**: Docker & Railway
 
 ## Getting Started
 To run the project locally:
