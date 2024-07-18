@@ -41,3 +41,12 @@ Contributions are welcome! If you'd like to contribute to Draw AI Number Guesser
 
 ## Process
 ![image](https://github.com/Cadhig/DrawAI/assets/160413853/8ba39f42-2a79-43bf-ac0e-38366b11c1ba)
+
+## Neural Network Details
+
+The neural network is a simple CNN with the following architecture.
+
+![nn (1)](https://github.com/user-attachments/assets/ba952723-51c0-4751-8aaa-0ac942311db3)
+
+It was trained in the MNIST data set, with greyscale values mapped to 0 or 1, with a 0.75 threshold to be black (ink colored).
+
